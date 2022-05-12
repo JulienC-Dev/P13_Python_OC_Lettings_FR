@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunSQL("""
         UPDATE `sqlite_sequence`
-        SET `seq` = (SELECT MAX(`id`) FROM 'lettings_address')
-        WHERE `name` = 'lettings_address';
+        SET `seq` = (SELECT MAX(`id`) FROM 'profiles_profile')
+        WHERE `name` = 'profiles_profile';
         """)
     ]
