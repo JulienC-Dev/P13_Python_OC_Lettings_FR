@@ -19,7 +19,9 @@ jobs:
     docker:
       - image: python:3.8-slim-buster
     steps:
-      - run: pytest
+      - checkout
+      - run:
+          command: python -m pytest
 
 
 workflows:
