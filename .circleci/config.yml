@@ -2,7 +2,19 @@ version: 2.1
 orbs:
   python: circleci/python@2.0.3
 jobs:
-  build_and_test:
+  build:
+    working_directory: ~/app
+    docker:
+      - image: python:3.8-slim-buster
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - run: pip install -r requirements.txt
+      - run:
+          working_directory: ~/app/oc_lettings_site
+          command: python manage.py
+  test:
     working_directory: ~/app
     docker:
       - image: python:3.8-slim-buster
@@ -14,6 +26,7 @@ jobs:
       - run:
           working_directory: ~/app/oc_lettings_site
           command: python -m pytest
+
 
 
 workflows:
