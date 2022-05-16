@@ -18,18 +18,10 @@ jobs:
             python -m pytest
             python -m flake8
 
-#  test:
+#  build_and_deploy:
 #    working_directory: ~/app
-#    docker:
-#      - image: python:3.8-slim-buster
-#    steps:
-#      - checkout
-#      - python/install-packages:
-#          pkg-manager: pip
-#      - run: pip install -r requirements.txt
-#      - run:
-#          working_directory: ~/app/oc_lettings_site
-#          command: python -m pytest
+#      docker:
+#          - image: python:3.8-slim-buster
 #      - run:
 #          name : Linting
 #          command: flake8
@@ -49,6 +41,5 @@ workflows:
   master_workflows:
     jobs:
       - build_and_test
-#      - test:
-#          requires:
-#            - build
+      - build_and_deploy
+
