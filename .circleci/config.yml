@@ -12,19 +12,29 @@ jobs:
           pkg-manager: pip
       - run: pip install -r requirements.txt
       - run:
-          name : run app
+          name : run tests
           working_directory: ~/app/oc_lettings_site
           command: |
             python -m pytest
             python -m flake8
 
-#  build_and_deploy:
-#    working_directory: ~/app
-#      docker:
-#          - image: python:3.8-slim-buster
-#      - run:
-#          name : Linting
-#          command: flake8
+  build_and_deploy:
+    working_directory: ~/app
+    docker:
+      - image: python:3.8-slim-buster
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: push dockerhub
+          command: |
+            TAG=${CIRCLE_SHA1}
+            docker build -t app_oc_lettings_site:1 .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker tag julienx2/app_oc_lettings_site:$TAG julienx2/app_oc_lettings_site:latest
+            docker push julienx2/app_oc_lettings_site:$TAG
+
 #  deploy:
 #    working_directory: ~/app
 #      docker:
@@ -41,5 +51,5 @@ workflows:
   master_workflows:
     jobs:
       - build_and_test
-#      - build_and_deploy
+      - build_and_deploy
 
