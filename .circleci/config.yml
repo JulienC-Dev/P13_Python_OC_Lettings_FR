@@ -10,10 +10,10 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pip
+      - run: pip install -r requirements.txt
       - run:
           path: oc_lettigns_site/
           command: |
-            pip install -r requirements.txt
             python manage.py runserver
 
 workflows:
