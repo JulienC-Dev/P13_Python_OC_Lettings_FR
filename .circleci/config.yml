@@ -14,8 +14,17 @@ jobs:
       - run:
           working_directory: ~/app/oc_lettings_site
           command: python manage.py
+  test:
+    docker:
+      - image: python:3.8-slim-buster
+    steps:
+      - run: pytest
+
 
 workflows:
-  build:
+  build_and_test:
     jobs:
       - build
+      - test:
+          requires:
+            - build
