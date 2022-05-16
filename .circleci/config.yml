@@ -28,7 +28,6 @@ jobs:
           command: python -m pytest
 
 
-
 workflows:
   build_and_test:
     jobs:
