@@ -30,17 +30,14 @@ jobs:
           name: push dockerhub
           command: |
             TAG=${CIRCLE_SHA1}
-            echo $TAG
             docker build -t julienx2/app_oc_lettings_site:$TAG .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker tag julienx2/app_oc_lettings_site:$TAG julienx2/app_oc_lettings_site:latest
             docker push julienx2/app_oc_lettings_site:$TAG
             docker push julienx2/app_oc_lettings_site:latest
 
-
-
 workflows:
-  master_workflows:
+  workflows_master:
     jobs:
       - build_and_test
       - build_and_deploy:
