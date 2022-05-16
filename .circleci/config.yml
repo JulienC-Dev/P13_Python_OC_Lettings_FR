@@ -34,6 +34,7 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker tag julienx2/app_oc_lettings_site:$TAG julienx2/app_oc_lettings_site:latest
             docker push julienx2/app_oc_lettings_site:$TAG
+            docker push julienx2/app_oc_lettings_site:latest
 
 #  deploy:
 #    working_directory: ~/app
