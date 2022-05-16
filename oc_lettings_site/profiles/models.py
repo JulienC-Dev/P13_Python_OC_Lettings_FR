@@ -8,12 +8,4 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-1ddd
-d
-
-fdfddfdffdfdfdfddfdf
-
-
-
-2222FDfdccccvvvvv212212zz
-dssddffdfd
+dffdfdfd
