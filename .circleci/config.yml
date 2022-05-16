@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   python: circleci/python@2.0.3
 jobs:
-  build-and-test:
+  build_and_test:
     working_directory: ~/app
     docker:
       - image: python:3.8-slim-buster
@@ -46,7 +46,7 @@ jobs:
 workflows:
   master_workflows:
     jobs:
-      - build-andvtest
+      - build_and_test
 #      - test:
 #          requires:
 #            - build
