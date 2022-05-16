@@ -8,6 +8,6 @@ def test_view_index_oc_status(client):
 
 
 def test_view_index_oc_title(client):
-    url = reverse('index')
+    url = reverse('indexfdd')
     response = client.get(url)
     assert '<title>Holiday Homes</title>' in str(response.content)
