@@ -15,6 +15,6 @@ jobs:
             python manage.py runserver
 
 workflows:
-  build_and_test:
+  build:
     jobs:
       - build
