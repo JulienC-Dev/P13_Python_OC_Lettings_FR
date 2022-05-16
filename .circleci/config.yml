@@ -15,6 +15,7 @@ jobs:
           working_directory: ~/app/oc_lettings_site
           command: python manage.py
   test:
+    working_directory: ~/app/oc_lettings_site
     docker:
       - image: python:3.8-slim-buster
     steps:
