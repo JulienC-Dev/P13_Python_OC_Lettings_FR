@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   python: circleci/python@2.0.3
 jobs:
-  build:
+  build_and_test:
     working_directory: ~/app
     docker:
       - image: python:3.8-slim-buster
@@ -11,35 +11,42 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
       - run: pip install -r requirements.txt
-      - run:
-          command: |
-            docker build -t julienx2/app_oc_lettings_site:1 .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker tag julienx2/app_oc_lettings_site:1 julienx2/app_oc_lettings_site:1
-            docker push julienx2/app_oc_lettings_site:1
+#      - run:
+#          name : run app
+#          working_directory: ~/app/oc_lettings_site
+#          command: python manage.py
 
-  test:
-    working_directory: ~/app
-    docker:
-      - image: python:3.8-slim-buster
-    steps:
-      - checkout
-      - python/install-packages:
-          pkg-manager: pip
-      - run: pip install -r requirements.txt
-      - run:
-          working_directory: ~/app/oc_lettings_site
-          command: python -m pytest
+#  test:
+#    working_directory: ~/app
+#    docker:
+#      - image: python:3.8-slim-buster
+#    steps:
+#      - checkout
+#      - python/install-packages:
+#          pkg-manager: pip
+#      - run: pip install -r requirements.txt
+#      - run:
+#          working_directory: ~/app/oc_lettings_site
+#          command: python -m pytest
 #      - run:
 #          name : Linting
 #          command: flake8
-
+#  deploy:
+#    working_directory: ~/app
+#      docker:
+#        - image: python:3.8-slim-buster
+#      steps:
+#        - checkout
+#    docker build -t app_oc_lettings_site:1 .
+#    docker login -u $DOCKER_USER -p $DOCKER_PASS
+#    docker tag julienx2/app_oc_lettings_site:1 julienx2/app_oc_lettings_site:1
+#    docker push julienx2/app_oc_lettings_site:1
 
 
 workflows:
-  build_and_test:
+  complete_deploy:
     jobs:
       - build
-      - test:
-          requires:
-            - build
+#      - test:
+#          requires:
+#            - build
