@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   python: circleci/python@2.0.3
 jobs:
-  build:
+  build: app_building
     working_directory: ~/app
     docker:
       - image: python:3.8-slim-buster
