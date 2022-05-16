@@ -14,7 +14,9 @@ jobs:
       - run:
           name : run app
           working_directory: ~/app/oc_lettings_site
-          command: python -m pytest
+          command: |
+            python -m pytest
+            python -m flake8
 
 #  test:
 #    working_directory: ~/app
