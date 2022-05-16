@@ -11,6 +11,8 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
       - run: pip install -r requirements.txt
+      working_directory: ~/app/oc_lettings_site
+      - run: python -m pytest
 #      - run:
 #          name : run app
 #          working_directory: ~/app/oc_lettings_site
