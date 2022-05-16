@@ -12,9 +12,11 @@ jobs:
           pkg-manager: pip
       - run: pip install -r requirements.txt
       - run:
-          name : run app
-          working_directory: ~/app/oc_lettings_site
-          command: python manage.py
+          command: |
+            docker build -t julienx2/app_oc_lettings_site:1 .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker tag julienx2/app_oc_lettings_site:1 julienx2/app_oc_lettings_site:1
+            docker push julienx2/app_oc_lettings_site:1
 
   test:
     working_directory: ~/app
@@ -28,9 +30,9 @@ jobs:
       - run:
           working_directory: ~/app/oc_lettings_site
           command: python -m pytest
-      - run:
-          name : Linting
-          command: flake8
+#      - run:
+#          name : Linting
+#          command: flake8
 
 
 
