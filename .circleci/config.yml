@@ -46,7 +46,7 @@ jobs:
 workflows:
   master_workflows:
     jobs:
-      - build-and-test
+      - build-andvtest
 #      - test:
 #          requires:
 #            - build
