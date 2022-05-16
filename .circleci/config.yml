@@ -12,8 +12,8 @@ jobs:
           pkg-manager: pip
       - run: pip install -r requirements.txt
       - run:
-          command: |
-            /app/oc_lettings_site python manage.py runserver
+          working_directory: ~/app/oc_lettings_site
+          command: python manage.py runserver
 
 workflows:
   build:
