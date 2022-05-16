@@ -15,7 +15,7 @@ jobs:
           name : run app
           working_directory: ~/app/oc_lettings_site
           command: python manage.py
-          when: on_success
+
   test:
     working_directory: ~/app
     docker:
@@ -28,6 +28,9 @@ jobs:
       - run:
           working_directory: ~/app/oc_lettings_site
           command: python -m pytest
+      - run:
+          name : Linting
+          command: flake8
 
 
 
