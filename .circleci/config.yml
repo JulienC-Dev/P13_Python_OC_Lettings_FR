@@ -17,7 +17,6 @@ jobs:
           command: |
             python -m pytest
             python -m flake8
-
   build_and_deploy:
     working_directory: ~/app
     docker:
