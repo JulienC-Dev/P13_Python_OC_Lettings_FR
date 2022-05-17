@@ -12,5 +12,5 @@ RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate
 
 
-#WORKDIR /app/oc_lettings_site
-#CMD gunicorn oc_lettings_site.wsgi:application --bind 0.0.0.0:$PORT
+WORKDIR /app/oc_lettings_site
+CMD gunicorn oc_lettings_site.wsgi:application --bind 0.0.0.0:$PORT
