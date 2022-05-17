@@ -36,6 +36,19 @@ jobs:
             docker push julienx2/app_oc_lettings_site:$TAG
             docker push julienx2/app_oc_lettings_site:latest
 
+  deploy_heroku:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Deploy image Docker to Heroku
+          command: |
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+
+
+
+
 workflows:
   workflows_master:
     jobs:
@@ -47,5 +60,5 @@ workflows:
                 - master
           requires:
             - build_and_test
-
+      - deploy_heroku
 
