@@ -10,4 +10,4 @@ COPY . .
 
 WORKDIR /app/oc_lettings_site/oc_lettings_site
 
-CMD gunicorn .wsgi:application --bind 0.0.0.0:$PORT
+CMD gunicorn wsgi:application --bind 0.0.0.0:$PORT
