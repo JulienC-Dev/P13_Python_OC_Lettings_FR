@@ -5,7 +5,10 @@ WORKDIR /app
 
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
+WORKDIR /app/oc_lettings_site
 RUN python manage.py collectstatic
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 COPY . .
 
 WORKDIR /app/oc_lettings_site
