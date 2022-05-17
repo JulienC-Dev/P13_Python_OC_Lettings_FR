@@ -10,4 +10,3 @@ urlpatterns = [
     path('lettings/', include('lettings.urls')),
     path('profiles/', include('profiles.urls')),
 ]
-
