@@ -14,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv("SECRET_KEY_DJANGO")
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ["DEBUG_DJANGO"] == 'TRUE'
-DEBUG = int(os.getenv('DEBUG_DJANGO', 0))
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # Application definition
