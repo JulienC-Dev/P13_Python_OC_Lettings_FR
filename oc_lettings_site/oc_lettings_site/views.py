@@ -12,6 +12,6 @@ def trigger_error(request):
 # placerat luctus. Nullam elementum urna nisi, pellentesque iaculis enim cursus in. Praesent
 # volutpat porttitor magna, non finibus neque cursus id.
 
-ccx
+ccxx
 def index(request):
     return render(request, 'oc_lettings_site/index.html')
